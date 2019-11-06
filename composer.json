@@ -1,0 +1,42 @@
+{
+    "name": "freyo/laravel-queue-rocketmq",
+    "description": "Queue Adapter for AlibabaMQ(Apache RocketMQ) SDK",
+    "keywords": ["laravel-queue", "rocketmq", "aliyun"],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/queue": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "aliyunmq/mq-http-sdk": "^1.0"
+    },
+    "require-dev": {
+        "php": ">=5.6.4",
+        "phpunit/phpunit": "~4.8",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Freyo\\LaravelQueueRocketMQ\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Freyo\\LaravelQueueRocketMQ\\Tests\\": "tests"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "freyo",
+            "email": "freyhsiao@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Freyo\\LaravelQueueRocketMQ\\LaravelQueueRocketMQServiceProvider"
+            ]
+        }
+    }
+}
