@@ -1,7 +1,7 @@
 {
     "name": "freyo/laravel-queue-rocketmq",
     "description": "Queue Adapter for AlibabaMQ(Apache RocketMQ) SDK",
-    "keywords": ["laravel-queue", "rocketmq", "aliyun"],
+    "keywords": ["laravel-queue", "rocketmq", "aliyun", "alibabamq"],
     "require": {
         "php": ">=5.6.4",
         "illuminate/queue": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",

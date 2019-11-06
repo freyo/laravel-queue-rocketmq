@@ -1,8 +1,8 @@
 <div>
   <p align="center">
-    <image src="https://img.alicdn.com/tfs/TB1DThKRXXXXXa.XpXXXXXXXXXX-200-200.png" width="200" height="200">
+    <image src="https://img.alicdn.com/tfs/TB1DThKRXXXXXa.XpXXXXXXXXXX-200-200.png" width="150" height="150">
   </p>
-  <p align="center">AlibabaMQ(Apache RocketMQ) Message Queue Driver for Laravel Queue</p>
+  <p align="center">AlibabaMQ(Apache RocketMQ) Driver for Laravel Queue</p>
   <p align="center">
     <a href="LICENSE">
       <image src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
