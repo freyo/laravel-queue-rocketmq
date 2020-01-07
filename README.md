@@ -78,17 +78,13 @@ Once you completed the configuration you can use Laravel Queue API. If you used 
 The default connection name is `rocketmq`
 
   ```php
-  //use queue only
-  Job::dispatch()->onConnection('connection-name')->onQueue('queue-name');
-  // or dispatch((new Job())->onConnection('connection-name')->onQueue('queue-name'))
+  // Without message tag (ROCKETMQ_USE_MESSAGE_TAG=false)
+  Job::dispatch()->onConnection('connection-name')->onQueue('TopicTestMQ');
+  // or dispatch((new Job())->onConnection('connection-name')->onQueue('TopicTestMQ'))
   
-  //use topic and tag filter
-  Job::dispatch()->onConnection('connection-name')->onQueue('tag1,tag2,tag3');
-  // or dispatch((new Job())->onConnection('connection-name')->onQueue('tag1,tag2,tag3'))
-  
-  //use topic and routing filter
-  Job::dispatch()->onConnection('connection-name')->onQueue('routing-key');
-  // or dispatch((new Job())->onConnection('connection-name')->onQueue('routing-key'))
+  // With message tag (ROCKETMQ_USE_MESSAGE_TAG=true)
+  Job::dispatch()->onConnection('connection-name')->onQueue('TagA');
+  // or dispatch((new Job())->onConnection('connection-name')->onQueue('TagA'))
   ```
 
 #### Multiple Queues
