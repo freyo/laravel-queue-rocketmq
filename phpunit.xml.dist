@@ -19,12 +19,4 @@
             <directory suffix=".php">src/</directory>
         </whitelist>
     </filter>
-    <php>
-        <env name="ROCKETMQ_ENDPOINT" value=""/>
-        <env name="ROCKETMQ_ACCESS_KEY" value=""/>
-        <env name="ROCKETMQ_ACCESS_ID" value=""/>
-        <env name="ROCKETMQ_INSTANCE_ID" value=""/>
-        <env name="ROCKETMQ_GROUP_ID" value=""/>
-        <env name="ROCKETMQ_QUEUE" value=""/>
-    </php>
 </phpunit>
