@@ -6,6 +6,7 @@ use Freyo\LaravelQueueRocketMQ\Queue\Connectors\RocketMQConnector;
 use Freyo\LaravelQueueRocketMQ\Queue\Jobs\RocketMQJob;
 use Freyo\LaravelQueueRocketMQ\Queue\RocketMQQueue;
 use Illuminate\Container\Container;
+use MQ\Model\Message;
 use MQ\Model\TopicMessage;
 use MQ\MQConsumer;
 use MQ\MQProducer;
@@ -76,7 +77,16 @@ class RocketMQQueueTest extends TestCase
      */
     public function testPush(RocketMQQueue $queue, $config)
     {
-        $this->assertInstanceOf(TopicMessage::class, $queue->push('App\Jobs\CMQJob@handle'));
+        $queue = \Mockery::mock(RocketMQQueue::class)
+            ->shouldAllowMockingProtectedMethods();
+
+        $queue->expects()
+            ->push('App\Jobs\RocketMQJob@handle')
+            ->andReturn(new TopicMessage('MockMessageBody'));
+
+        $this->assertInstanceOf(
+            TopicMessage::class, $queue->push('App\Jobs\RocketMQJob@handle')
+        );
     }
 
     /**
@@ -84,7 +94,16 @@ class RocketMQQueueTest extends TestCase
      */
     public function testPushRaw(RocketMQQueue $queue, $config)
     {
-        $this->assertInstanceOf(TopicMessage::class, $queue->pushRaw('App\Jobs\CMQJob@handle'));
+        $queue = \Mockery::mock(RocketMQQueue::class)
+            ->shouldAllowMockingProtectedMethods();
+
+        $queue->expects()
+            ->pushRaw('App\Jobs\RocketMQJob@handle')
+            ->andReturn(new TopicMessage('MockMessageBody'));
+
+        $this->assertInstanceOf(
+            TopicMessage::class, $queue->pushRaw('App\Jobs\RocketMQJob@handle')
+        );
     }
 
     /**
@@ -92,7 +111,16 @@ class RocketMQQueueTest extends TestCase
      */
     public function testLater(RocketMQQueue $queue, $config)
     {
-        $queue->later(0, 'App\Jobs\CMQJob@handle');
+        $queue = \Mockery::mock(RocketMQQueue::class)
+            ->shouldAllowMockingProtectedMethods();
+
+        $queue->expects()
+            ->later(0, 'App\Jobs\RocketMQJob@handle')
+            ->andReturn(new TopicMessage('MockMessageBody'));
+
+        $this->assertInstanceOf(
+            TopicMessage::class, $queue->later(0, 'App\Jobs\RocketMQJob@handle')
+        );
     }
 
     /**
@@ -100,9 +128,16 @@ class RocketMQQueueTest extends TestCase
      */
     public function testPop(RocketMQQueue $queue, $config)
     {
-        $queue->setContainer(new Container());
+        $client = \Mockery::mock(RocketMQQueue::class)
+            ->shouldAllowMockingProtectedMethods();
 
-        $this->assertInstanceOf(RocketMQJob::class, $queue->pop());
+        $client->expects()
+            ->pop()
+            ->andReturn(
+                \Mockery::mock(RocketMQJob::class)
+            );
+
+        $this->assertInstanceOf(RocketMQJob::class, $client->pop());
     }
 
     /**
