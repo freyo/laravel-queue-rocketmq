@@ -12,7 +12,7 @@
     },
     "require-dev": {
         "php": ">=5.6.4",
-        "phpunit/phpunit": "~4.8",
+        "phpunit/phpunit": ">=5.6.3",
         "vlucas/phpdotenv": "^3.3",
         "mockery/mockery": "^1.2.3"
     },
