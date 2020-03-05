@@ -185,7 +185,7 @@ class RocketMQQueue extends Queue implements QueueContract
             $this,
             Arr::first($messages),
             $this->config['use_message_tag'] ? $this->config['queue'] : $queue,
-            $this->connectionName
+            $this->connectionName ?? null
         );
     }
 
