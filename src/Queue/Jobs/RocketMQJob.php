@@ -118,7 +118,7 @@ class RocketMQJob extends Job implements JobContract
 
         $this->connection
             ->getConsumer($this->getQueue())
-            ->ackMessage($this->message->getReceiptHandle());
+            ->ackMessage([$this->message->getReceiptHandle()]);
     }
 
     /**
